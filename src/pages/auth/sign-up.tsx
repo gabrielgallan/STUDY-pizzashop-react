@@ -1,6 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
 import { Loader2 } from 'lucide-react'
-import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -9,6 +8,7 @@ import { registerRestaurant } from '@/api/register-restaurant'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { PageTitle } from '@/components/page-title'
 
 const signUpFormSchema = z.object({
 	restaurantName: z.string(),
@@ -55,7 +55,7 @@ export function SignUp() {
 
 	return (
 		<>
-			<Helmet title="Cadastro" />
+			<PageTitle title="Register" />
 			<div className="p-8">
 				<Button variant="ghost" asChild className="p-5 absolute right-8 top-8">
 					<Link to="/sign-in">Fazer login</Link>

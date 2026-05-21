@@ -1,6 +1,6 @@
 import { api } from '@/lib/ky'
 
-interface GetManagedRestaurantResponse {
+export interface GetManagedRestaurantResponse {
 	id: string
 	managerId: string | null
 	name: string

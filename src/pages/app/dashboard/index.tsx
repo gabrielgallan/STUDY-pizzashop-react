@@ -1,15 +1,15 @@
-import { Helmet } from 'react-helmet-async'
 import { MonthDayOrdersAmountCard } from './cards/day-orders-amount-card'
 import { MonthCanceledOrdersAmountCard } from './cards/month-canceled-orders-amount'
 import { MonthOrdersAmountCard } from './cards/month-orders-amount-card'
 import { MonthRevenueCard } from './cards/month-revenue-card'
 import { PopularProductsChart } from './charts/popular-products-chart'
 import { RevenueChart } from './charts/revenue-chart'
+import { PageTitle } from '@/components/page-title'
 
 export function Dashboard() {
 	return (
 		<>
-			<Helmet title="Dashboard" />
+			<PageTitle title="Dashboard" />
 			<div className="flex flex-col gap-4">
 				<h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
 

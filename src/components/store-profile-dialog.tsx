@@ -1,9 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { getManagedRestaurant } from '@/api/get-managed-restaurant'
+import {
+	getManagedRestaurant,
+	type GetManagedRestaurantResponse,
+} from '@/api/get-managed-restaurant'
 import { updateProfile } from '@/api/update-profile'
 import { Button } from './ui/button'
 import {
@@ -20,12 +23,14 @@ import { Textarea } from './ui/textarea'
 
 const storeProfileSchema = z.object({
 	name: z.string().min(1),
-	description: z.string(),
+	description: z.string().nullable(),
 })
 
 type StoreProfileType = z.infer<typeof storeProfileSchema>
 
 export function StorePofileDialog() {
+	const queryClient = useQueryClient()
+
 	const { data: managedRestaurant } = useQuery({
 		queryKey: ['managed-restaurant'],
 		queryFn: getManagedRestaurant,
@@ -44,8 +49,32 @@ export function StorePofileDialog() {
 		},
 	})
 
+	function updateManagedRestaurant({ name, description }: StoreProfileType) {
+		const cached = queryClient.getQueryData<GetManagedRestaurantResponse>(['managed-restaurant'])
+
+		if (cached) {
+			queryClient.setQueryData(['managed-restaurant'], {
+				...cached,
+				name,
+				description,
+			})
+		}
+
+		return { cached }
+	}
+
 	const { mutateAsync: updateProfileFn } = useMutation({
 		mutationFn: updateProfile,
+		onMutate({ name, description }) {
+			const { cached } = updateManagedRestaurant({ name, description })
+
+			return { previousProfile: cached }
+		},
+		onError(_, __, context) {
+			if (context?.previousProfile) {
+				updateManagedRestaurant(context.previousProfile)
+			}
+		},
 	})
 
 	async function handleUpdateStore(data: StoreProfileType) {

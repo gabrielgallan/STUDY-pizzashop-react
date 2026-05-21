@@ -1,6 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
 import { Loader2 } from 'lucide-react'
-import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link, useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -9,6 +8,7 @@ import { signIn } from '@/api/sign-in'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { PageTitle } from '@/components/page-title'
 
 const signInFormSchema = z.object({
 	email: z.email(),
@@ -51,7 +51,7 @@ export function SignIn() {
 
 	return (
 		<>
-			<Helmet title="Login" />
+			<PageTitle title="Sign In" />
 			<div className="p-8">
 				<Button variant="ghost" asChild className="p-5 absolute right-8 top-8">
 					<Link to="/sign-up">Novo estabelecimento</Link>
