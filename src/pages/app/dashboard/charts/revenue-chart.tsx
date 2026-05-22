@@ -1,14 +1,14 @@
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
-import colors from 'tailwindcss/colors'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useQuery } from '@tanstack/react-query'
-import { getDailyRevenueInPeriod } from '@/api/get-daily-revenue-in-period'
-import { Label } from '@/components/ui/label'
-import { DateRangePicker } from '@/components/date-range-picker'
-import { useState } from 'react'
-import type { DateRange } from 'react-day-picker'
 import { subDays } from 'date-fns'
 import { Loader2 } from 'lucide-react'
+import { useState } from 'react'
+import type { DateRange } from 'react-day-picker'
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
+import colors from 'tailwindcss/colors'
+import { getDailyRevenueInPeriod } from '@/api/get-daily-revenue-in-period'
+import { DateRangePicker } from '@/components/date-range-picker'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Label } from '@/components/ui/label'
 
 // const data = [
 // 	{ date: '18/05', revenue: 1200 },

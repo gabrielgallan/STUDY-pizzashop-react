@@ -1,7 +1,7 @@
-import { DollarSign } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useQuery } from '@tanstack/react-query'
+import { DollarSign } from 'lucide-react'
 import { getMonthCanceledOrdersAmount } from '@/api/get-month-canceled-orders-amount'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { MetricsCardSkeleton } from '../skeletons/metrics-card-skeleton'
 
 export function MonthCanceledOrdersAmountCard() {

@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query'
 import { BarChart, Loader2 } from 'lucide-react'
 import {
 	Label,
@@ -10,9 +11,8 @@ import {
 	Sector,
 } from 'recharts'
 import colors from 'tailwindcss/colors'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useQuery } from '@tanstack/react-query'
 import { getPopularProducts } from '@/api/get-popular-products'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 const chartColors = [
 	colors.violet[500],

@@ -1,5 +1,5 @@
-import { PageTitle } from '@/components/page-title'
 import { Link, useRouteError } from 'react-router-dom'
+import { PageTitle } from '@/components/page-title'
 
 export function ErrorPage() {
 	const error = useRouteError() as Error

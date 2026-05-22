@@ -1,3 +1,6 @@
+import { useQuery } from '@tanstack/react-query'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import { getOrderDetails } from '@/api/get-order-details'
 import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import {
@@ -9,11 +12,8 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table'
-import { useQuery } from '@tanstack/react-query'
-import { formatDistanceToNow } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
 import { OrderStatusBadge } from './order-status'
-import { OrdersDetailsSkeleton } from './orders-details-skeleton'
+import { OrdersDetailsSkeleton } from './skeletons/orders-details-skeleton'
 
 interface OrderDetailsProps {
 	orderId: string

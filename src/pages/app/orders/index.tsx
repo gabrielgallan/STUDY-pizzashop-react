@@ -1,13 +1,13 @@
+import { useQuery } from '@tanstack/react-query'
+import { useSearchParams } from 'react-router-dom'
+import { z } from 'zod'
+import { getOrders } from '@/api/get-orders'
+import { PageTitle } from '@/components/page-title'
 import { Pagination } from '@/components/pagination'
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { OrderTableFilters } from './order-table-filters'
 import { OrderTableRow } from './order-table-row'
-import { PageTitle } from '@/components/page-title'
-import { getOrders } from '@/api/get-orders'
-import { useQuery } from '@tanstack/react-query'
-import { useSearchParams } from 'react-router-dom'
-import { z } from 'zod'
-import { OrderTableSkeleton } from './order-table-skeleton'
+import { OrderTableSkeleton } from './skeletons/order-table-skeleton'
 
 export function Orders() {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -66,8 +66,9 @@ export function Orders() {
 						<TableBody>
 							{isLoading && <OrderTableSkeleton />}
 
-							{result &&
-								result.orders.map((order) => <OrderTableRow order={order} key={order.orderId} />)}
+							{result?.orders.map((order) => (
+								<OrderTableRow order={order} key={order.orderId} />
+							))}
 						</TableBody>
 					</Table>
 				</div>

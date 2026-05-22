@@ -25,7 +25,7 @@ export function OrderStatusBadge({ status }: OrderStatusProps) {
 
 	return (
 		<div className="flex items-center gap-2">
-			<span className={spanClass}></span>
+			<span data-testid="badge" className={spanClass}></span>
 			<span className="font-medium text-muted-foreground">{orderStatusMap[status]}</span>
 		</div>
 	)

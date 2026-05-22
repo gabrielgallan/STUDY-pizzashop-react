@@ -5,10 +5,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import z from 'zod'
 import { registerRestaurant } from '@/api/register-restaurant'
+import { PageTitle } from '@/components/page-title'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { PageTitle } from '@/components/page-title'
 
 const signUpFormSchema = z.object({
 	restaurantName: z.string(),

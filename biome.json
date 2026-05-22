@@ -7,7 +7,16 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**", "!node_modules", "!dist", "!build", "!coverage", "!public", "!src/index.css"]
+		"includes": [
+			"**",
+			"!node_modules",
+			"!dist",
+			"!build",
+			"!coverage",
+			"!public",
+			"!src/index.css",
+			"!src/components/ui"
+		]
 	},
 	"formatter": {
 		"enabled": true,
@@ -42,7 +51,8 @@
 				"noNonNullAssertion": "off"
 			},
 			"suspicious": {
-				"noExplicitAny": "warn"
+				"noExplicitAny": "warn",
+				"noArrayIndexKey": "off"
 			}
 		}
 	}

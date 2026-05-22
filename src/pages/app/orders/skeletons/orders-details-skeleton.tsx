@@ -1,12 +1,12 @@
 import { Skeleton } from '@/components/ui/skeleton'
 import {
+	Table,
 	TableBody,
 	TableCell,
 	TableFooter,
 	TableHead,
 	TableHeader,
 	TableRow,
-	Table,
 } from '@/components/ui/table'
 
 export function OrdersDetailsSkeleton() {

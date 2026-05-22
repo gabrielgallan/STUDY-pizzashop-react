@@ -5,10 +5,10 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import z from 'zod'
 import { signIn } from '@/api/sign-in'
+import { PageTitle } from '@/components/page-title'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { PageTitle } from '@/components/page-title'
 
 const signInFormSchema = z.object({
 	email: z.email(),
