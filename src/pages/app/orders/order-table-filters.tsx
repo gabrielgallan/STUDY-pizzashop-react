@@ -18,7 +18,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 const orderFilterSchema = z.object({
 	orderId: z.string(),
 	customerName: z.string(),
-	status: z.string(),
+	status: z.string().optional(),
 })
 
 type OrderFilterType = z.infer<typeof orderFilterSchema>

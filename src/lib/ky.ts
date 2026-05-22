@@ -7,8 +7,23 @@ export const api = ky.create({
 
 	hooks: {
 		beforeRequest: [
-			async () => {
-				await new Promise((resolve) => setTimeout(resolve, 2000))
+			// async () => {
+			// 	await new Promise((resolve) => setTimeout(resolve, 5000))
+			// },
+		],
+		afterResponse: [
+			async ({ response }) => {
+				const status = response.status
+
+				if (status !== 401) {
+					return
+				}
+
+				const { code } = await response.json<{ code?: string }>()
+
+				if (code === 'UNAUTHORIZED') {
+					window.location.href = '/sign-in'
+				}
 			},
 		],
 	},
